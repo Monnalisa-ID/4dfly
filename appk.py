@@ -15,7 +15,6 @@ user_agent = ua.random
 print (user_agent)
 class bot:
     def __init__(self):
-        self.add_argument(f'user-agent={user_agent}')
         self.add_argument('--ignore-certificate-errors')
         self.add_argument('--allow-running-insecure-content')
         self.add_argument("--proxy-server='direct://'")
@@ -29,7 +28,7 @@ class bot:
 bot()
 
 opts = Options()
-
+opts.add_argument("user-agent=" + user_agent)
 opts.add_extension('./buster_ext.crx')
 opts.add_argument('--ignore-ssl-erros')
 print ('OTW TUYUL BOSQUE....')
@@ -40,7 +39,9 @@ delay = 10 #Delay
 try:
     element = WebDriverWait(driver, delay).until(EC.element_to_be_clickable((By.XPATH, path)))
     element.click()
+    os.system('cls')
     print ('OTW MENUYUL BOSQUE....')
+     time.sleep(2)
 finally:
     print('MISI SELESAI BOSQUE...')
     time.sleep(3)
