@@ -44,25 +44,12 @@ def fres(i):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 opts = Options()
 opts.add_argument('--ignore-certificate-errors')
 opts.add_argument('--allow-running-insecure-content')
-opts.add_argument("--proxy-server='direct://'")
-opts.add_argument("--proxy-bypass-list=*")
+#opts.add_argument("--proxy-server='direct://'")
+#opts.add_argument("--proxy-bypass-list=*")
+options.add_argument('--proxy-server=%s' % i)
 opts.add_argument("--start-maximized")
 opts.add_argument('--disable-gpu')
 opts.add_argument('--disable-dev-shm-usage')
