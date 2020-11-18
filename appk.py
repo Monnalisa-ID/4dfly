@@ -26,11 +26,11 @@ class bot:
         self.add_argument('--no-sandbox')
 
         #self.driver.get('http://raboninco.com/1sLv9')
+bot()
 
 opts = Options()
-bot()
+
 opts.add_extension('./buster_ext.crx')
-opts.add_argument('--ignore-certificate-erros')
 opts.add_argument('--ignore-ssl-erros')
 print ('OTW TUYUL BOSQUE....')
 driver = webdriver.Chrome(chrome_options=opts)
