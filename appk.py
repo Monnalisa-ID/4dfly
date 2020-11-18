@@ -13,21 +13,17 @@ ua = UserAgent()
 a = ua.random
 user_agent = ua.random
 print (user_agent)
-class bot:
-    def __init__(self):
-        self.add_argument('--ignore-certificate-errors')
-        self.add_argument('--allow-running-insecure-content')
-        self.add_argument("--proxy-server='direct://'")
-        self.add_argument("--proxy-bypass-list=*")
-        self.add_argument("--start-maximized")
-        self.add_argument('--disable-gpu')
-        self.add_argument('--disable-dev-shm-usage')
-        self.add_argument('--no-sandbox')
 
-        #self.driver.get('http://raboninco.com/1sLv9')
-bot()
 
 opts = Options()
+opts.add_argument('--ignore-certificate-errors')
+        opts.add_argument('--allow-running-insecure-content')
+        opts.add_argument("--proxy-server='direct://'")
+        opts.add_argument("--proxy-bypass-list=*")
+        opts.add_argument("--start-maximized")
+        opts.add_argument('--disable-gpu')
+        opts.add_argument('--disable-dev-shm-usage')
+        opts.add_argument('--no-sandbox')
 opts.add_argument("user-agent=" + user_agent)
 opts.add_extension('./buster_ext.crx')
 opts.add_argument('--ignore-ssl-erros')
@@ -41,7 +37,7 @@ try:
     element.click()
     os.system('cls')
     print ('OTW MENUYUL BOSQUE....')
-     time.sleep(2)
+    time.sleep(2)
 finally:
     print('MISI SELESAI BOSQUE...')
     time.sleep(3)
