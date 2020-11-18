@@ -15,7 +15,7 @@ user_agent = ua.random
 print (user_agent)
 class bot:
     def __init__(self):
-        self.add_argument("user-agent=" + user_agent)
+        self.add_argument(f'user-agent={user_agent}')
         self.add_argument('--ignore-certificate-errors')
         self.add_argument('--allow-running-insecure-content')
         self.add_argument("--proxy-server='direct://'")
