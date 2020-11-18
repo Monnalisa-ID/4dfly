@@ -17,7 +17,6 @@ class bot:
     def __init__(self):
         self = webdriver.ChromeOptions()
         self.add_argument(f'user-agent={user_agent}')
-        self.add_argument("--window-size=1920,1080")
         self.add_argument('--ignore-certificate-errors')
         self.add_argument('--allow-running-insecure-content')
         self.add_argument("--disable-extensions")
