@@ -15,22 +15,20 @@ user_agent = ua.random
 print (user_agent)
 class bot:
     def __init__(self):
-        self = webdriver.ChromeOptions()
         self.add_argument("user-agent=" + user_agent)
         self.add_argument('--ignore-certificate-errors')
         self.add_argument('--allow-running-insecure-content')
-        self.add_argument("--disable-extensions")
         self.add_argument("--proxy-server='direct://'")
         self.add_argument("--proxy-bypass-list=*")
         self.add_argument("--start-maximized")
         self.add_argument('--disable-gpu')
         self.add_argument('--disable-dev-shm-usage')
         self.add_argument('--no-sandbox')
-        self.driver = webdriver.Chrome(options=self)
 
         #self.driver.get('http://raboninco.com/1sLv9')
 
 opts = Options()
+bot()
 opts.add_extension('./buster_ext.crx')
 opts.add_argument('--ignore-certificate-erros')
 opts.add_argument('--ignore-ssl-erros')
