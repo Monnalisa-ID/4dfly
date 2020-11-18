@@ -1,5 +1,6 @@
-#Ver 1.24
-#Hargai Creator :D
+#Ver 1.24Fixed
+#Created By Monnalisa-ID
+#Do Creative Don't Recode :D
 import time,sys,random,os
 import requests
 from fake_useragent import UserAgent
@@ -22,6 +23,7 @@ pl = []
 prolist = requests.get("https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all").text
 prolist1 = requests.get("https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&country=all").text
 prolist2 = requests.get("https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=10000&country=all").text
+prolist3 = requests.get("https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt").text
 dl = []
 for i in prolist.splitlines():
     pl.append(i)
@@ -32,48 +34,52 @@ for i in prolist1.splitlines():
 for i in prolist2.splitlines():
     pl.append(i)
 
+for i in prolist3.splitlines():
+    pl.append(i)
+
 def tri(i):
     try:
         if requests.get(my_url,proxies={"https":"https://"+i},timeout=0.4).status_code == 200:
             print(i)
-            tro(i)
+            #tro(i)
     except:
-                pass
-
+            pass
+my_url = 'http://raboninco.com/1sLv9'
 def fres(i):
     i.refresh()
 
 
 
-def tro(i):
-    opts = Options()
-    opts.add_argument('--ignore-certificate-errors')
-    opts.add_argument('--allow-running-insecure-content')
+
+opts = Options()
+opts.add_argument('--ignore-certificate-errors')
+opts.add_argument('--allow-running-insecure-content')
 #opts.add_argument("--proxy-server='direct://'")
 #opts.add_argument("--proxy-bypass-list=*")
-    opts.add_argument('--proxy-server=%s' % i)
-    opts.add_argument("--start-maximized")
-    opts.add_argument('--disable-gpu')
-    opts.add_argument('--disable-dev-shm-usage')
-    opts.add_argument('--no-sandbox')
-    opts.add_argument("user-agent=" + user_agent)
-    opts.add_extension('./buster_ext.crx')
-    opts.add_argument('--ignore-ssl-erros')
-    print ('OTW TUYUL BOSQUE....')
-    driver = webdriver.Chrome(chrome_options=opts)
-    driver.minimize_window()
-    driver.get('http://raboninco.com/1sLv9')
-    path = "/html/body/div[6]/table/tbody/tr[1]/td/div/div[1]/span[2]/a/img"
-    delay = 10 #Delay
+opts.add_argument('--proxy-server=%s' % i)
+print(i)
+opts.add_argument("--start-maximized")
+opts.add_argument('--disable-gpu')
+opts.add_argument('--disable-dev-shm-usage')
+opts.add_argument('--no-sandbox')
+opts.add_argument("user-agent=" + user_agent)
+opts.add_extension('./buster_ext.crx')
+opts.add_argument('--ignore-ssl-erros')
+print ('OTW TUYUL BOSQUE....')
+driver = webdriver.Chrome(chrome_options=opts)
+driver.get(my_url)
+driver.minimize_window()
+path = "/html/body/div[6]/table/tbody/tr[1]/td/div/div[1]/span[2]/a/img"
+delay = 10 #Delay
 
-def key_button():
-    try:
+try:
+        driver.get(my_url)
         element = WebDriverWait(driver, delay).until(EC.element_to_be_clickable((By.XPATH, path)))
         element.click()
         os.system('cls')
         print ('OTW MENUYUL BOSQUE....')
         time.sleep(2)
-    finally:
+finally:
         print('MISI SELESAI BOSQUE...')
         time.sleep(3)
         os.system('cls')
