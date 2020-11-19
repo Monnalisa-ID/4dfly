@@ -1,7 +1,8 @@
-#Ver 1.24Fixed
+#Ver 1.25 UPDATE
 #Created By Monnalisa-ID
 #Do Creative Don't Recode :D
 import time,sys,random,os
+import datetime
 import requests
 from fake_useragent import UserAgent
 from multiprocessing.pool import ThreadPool
@@ -12,38 +13,32 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+texto = "BOT ADFLY \nMade BY Monnalisa"
+print(texto.center(60,"+"))
+print("_"*60)
 ua = UserAgent()
 a = ua.random
 user_agent = ua.random
 print (user_agent)
+proxcrot = requests.get("https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt").text
+proxme = open(str('proxy.txt'), 'w+')
+print('Scraping Proxy...')
+time.sleep(5)
+print('Creating File Proxy...')
+time.sleep(3)
+proxy = proxme.read()
+xxx = "\n{}".format(proxcrot)
+proxme.write(xxx)
+proxme.close()
 
 
 
-pl = []
-prolist = requests.get("https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all").text
-prolist1 = requests.get("https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&country=all").text
-prolist2 = requests.get("https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=10000&country=all").text
-prolist3 = requests.get("https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt").text
-dl = []
-for i in prolist.splitlines():
-    pl.append(i)
+myProxy = random.choice(open('proxy.txt').readlines())
+parts = myProxy.strip().split(":") # strip removes spaces and line breaks
+host = parts[0]
+port = int(parts[1]) # port needs to be an integer
 
-for i in prolist1.splitlines():
-    pl.append(i)
 
-for i in prolist2.splitlines():
-    pl.append(i)
-
-for i in prolist3.splitlines():
-    pl.append(i)
-
-def tri(i):
-    try:
-        if requests.get(my_url,proxies={"https":"https://"+i},timeout=0.4).status_code == 200:
-            print(i)
-            #tro(i)
-    except:
-            pass
 my_url = 'http://raboninco.com/1sLv9'
 def fres(i):
     i.refresh()
@@ -56,8 +51,12 @@ opts.add_argument('--ignore-certificate-errors')
 opts.add_argument('--allow-running-insecure-content')
 #opts.add_argument("--proxy-server='direct://'")
 #opts.add_argument("--proxy-bypass-list=*")
-opts.add_argument('--proxy-server=%s' % i)
-print(i)
+opts.add_argument('--proxy-server=%s' % myProxy)
+print('Selesai Scraping Proxy')
+time.sleep(3)
+print('MOHON TUNGGU SEBENTAR...')
+time.sleep(5) 
+print(port)
 opts.add_argument("--start-maximized")
 opts.add_argument('--disable-gpu')
 opts.add_argument('--disable-dev-shm-usage')
@@ -70,7 +69,7 @@ driver = webdriver.Chrome(chrome_options=opts)
 driver.get(my_url)
 driver.minimize_window()
 path = "/html/body/div[6]/table/tbody/tr[1]/td/div/div[1]/span[2]/a/img"
-delay = 10 #Delay
+delay = 15 #Delay
 
 try:
         driver.get(my_url)
