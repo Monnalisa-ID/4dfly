@@ -13,14 +13,15 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
-texto = "BOT ADFLY \nMade BY Monnalisa"
+os.system('cls')
+texto = "BOT ADFLY"
 print(texto.center(60,"+"))
 print("_"*60)
 ua = UserAgent()
 a = ua.random
 user_agent = ua.random
-print (user_agent)
-proxcrot = requests.get("https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt").text
+
+proxcrot = requests.get("https://free-proxy-list.net/").text
 proxme = open(str('proxy.txt'), 'w+')
 print('Scraping Proxy...')
 time.sleep(5)
@@ -35,8 +36,8 @@ proxme.close()
 
 myProxy = random.choice(open('proxy.txt').readlines())
 parts = myProxy.strip().split(":") # strip removes spaces and line breaks
-host = parts[0]
-port = int(parts[1]) # port needs to be an integer
+#host = parts[0]
+#port = int(parts[1]) # port needs to be an integer
 
 
 my_url = 'http://raboninco.com/1sLv9'
@@ -54,9 +55,12 @@ opts.add_argument('--allow-running-insecure-content')
 opts.add_argument('--proxy-server=%s' % myProxy)
 print('Selesai Scraping Proxy')
 time.sleep(3)
+os.system('cls')
 print('MOHON TUNGGU SEBENTAR...')
-time.sleep(5) 
-print(port)
+time.sleep(5)
+print (user_agent) 
+print("="*60)
+print(myProxy)
 opts.add_argument("--start-maximized")
 opts.add_argument('--disable-gpu')
 opts.add_argument('--disable-dev-shm-usage')
@@ -66,24 +70,28 @@ opts.add_extension('./buster_ext.crx')
 opts.add_argument('--ignore-ssl-erros')
 print ('OTW TUYUL BOSQUE....')
 driver = webdriver.Chrome(chrome_options=opts)
-driver.get(my_url)
 driver.minimize_window()
 path = "/html/body/div[6]/table/tbody/tr[1]/td/div/div[1]/span[2]/a/img"
 delay = 15 #Delay
-
-try:
+driver.set_page_load_timeout(200)
+try :
         driver.get(my_url)
+        print("URL successfully Accessed")
+except :
+        print("Page load Timeout Occured. Quiting !!!")
+        driver.quit()
+try:
+        
         element = WebDriverWait(driver, delay).until(EC.element_to_be_clickable((By.XPATH, path)))
         element.click()
         os.system('cls')
-        print ('OTW MENUYUL BOSQUE....')
+        print ('MADE BY MONNALISA-ID....')
         time.sleep(2)
 finally:
         print('MISI SELESAI BOSQUE...')
         time.sleep(3)
         os.system('cls')
         driver.quit()
-
 tp = ThreadPool(5000)
 tp.map(tri,pl)
 tp = ThreadPool(300)
