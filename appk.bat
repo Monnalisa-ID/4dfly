@@ -1,5 +1,5 @@
 @echo off
 :start
 call python appk.py
-timeout /t 10
+timeout /t 5
 goto start
